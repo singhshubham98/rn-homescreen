@@ -10,6 +10,7 @@ import {
 import Header from '../components/header';
 import LinearGradient from 'react-native-linear-gradient';
 import _calendarCarouselElement from './home/calendarCarouselElement';
+import TopProductOfDay from './home/topProductOfDay';
 
 export default function Home() {
   return (
@@ -31,6 +32,7 @@ export default function Home() {
           </ImageBackground>
         </View>
       </LinearGradient>
+      <TopProductOfDay />
     </ScrollView>
   );
 }
