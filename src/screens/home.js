@@ -10,6 +10,7 @@ import Header from '../components/header';
 import LinearGradient from 'react-native-linear-gradient';
 import _calendarCarouselElement from './home/calendarCarouselElement';
 import Quote from './home/quote';
+import LeftOfVideo from './home/leftOfVideo';
 
 export default function Home() {
   return (
@@ -29,6 +30,7 @@ export default function Home() {
         </View>
       </LinearGradient>
       <Quote />
+      <LeftOfVideo />
     </ScrollView>
   );
 }

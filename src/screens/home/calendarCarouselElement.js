@@ -1,8 +1,16 @@
 import React from 'react';
-import {Image, ImageBackground, StyleSheet, Text, View} from 'react-native';
+import {
+  Dimensions,
+  Image,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import CustomCarousel from '../../components/carousel';
 
 export default function _calendarCarouselElement(props) {
+  const width = Dimensions.get('window').width;
   const _renderItem = () => (
     <View style={styles.calendarCard}>
       <View style={{flex: 1 / 5, padding: 20}}>
@@ -58,6 +66,8 @@ export default function _calendarCarouselElement(props) {
   return (
     <>
       <CustomCarousel
+        width={width - 30}
+        height={width / 2}
         data={[...new Array(3).keys()]}
         _renderItem={_renderItem}
       />
