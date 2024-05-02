@@ -13,11 +13,13 @@ import Quote from './home/quote';
 import LeftOfVideo from './home/leftOfVideo';
 import Trending from './home/trending';
 import RecommendedActivity from './home/rActivity';
+import News from './home/news';
+import Events from './home/events';
 import TopProductOfDay from './home/topProductOfDay';
 
 export default function Home() {
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <LinearGradient colors={['#fff', '#FFD1C2']}>
         <Header />
         <View style={styles.flowerContainer}>
@@ -37,6 +39,8 @@ export default function Home() {
       <RecommendedActivity />
       <TopProductOfDay />
       <Trending />
+      <News />
+      <Events />
     </ScrollView>
   );
 }
