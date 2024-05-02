@@ -16,6 +16,7 @@ import RecommendedActivity from './home/rActivity';
 import News from './home/news';
 import Events from './home/events';
 import TopProductOfDay from './home/topProductOfDay';
+import Courses from './home/courses';
 
 export default function Home() {
   return (
@@ -41,6 +42,7 @@ export default function Home() {
       <Trending />
       <News />
       <Events />
+      <Courses />
     </ScrollView>
   );
 }
