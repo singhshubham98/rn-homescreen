@@ -12,6 +12,7 @@ import _calendarCarouselElement from './home/calendarCarouselElement';
 import Quote from './home/quote';
 import LeftOfVideo from './home/leftOfVideo';
 import Trending from './home/trending';
+import RecommendedActivity from './home/rActivity';
 
 export default function Home() {
   return (
@@ -32,6 +33,7 @@ export default function Home() {
       </LinearGradient>
       <Quote />
       <LeftOfVideo />
+      <RecommendedActivity />
       <Trending />
     </ScrollView>
   );
@@ -40,6 +42,7 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#fff',
   },
   flowerContainer: {
     width: '100%',
