@@ -13,6 +13,7 @@ import Quote from './home/quote';
 import LeftOfVideo from './home/leftOfVideo';
 import Trending from './home/trending';
 import RecommendedActivity from './home/rActivity';
+import TopProductOfDay from './home/topProductOfDay';
 
 export default function Home() {
   return (
@@ -35,6 +36,7 @@ export default function Home() {
       <LeftOfVideo />
       <RecommendedActivity />
       <Trending />
+      <TopProductOfDay />
     </ScrollView>
   );
 }
