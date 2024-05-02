@@ -10,15 +10,16 @@ import {
 } from 'react-native';
 import CustomCarousel from '../../components/carousel';
 import LinearGradient from 'react-native-linear-gradient';
+import {ScrollView} from 'react-native-gesture-handler';
 const width = Dimensions.get('window').width;
 
 export default function LeftOfVideo(props) {
-  const _renderItem = ({item, index}) => (
-    <View style={{height: 260}}>
+  const data = [...new Array(3).keys()];
+  const _renderItem = () => (
+    <View style={{height: 260, width: 260, marginHorizontal: 10}}>
       <ImageBackground
-        source={require('../../assets/teacher.png')}
-        resizeMode="cover"
-        imageStyle={{borderRadius: 8, height: '100%', width: '100%'}}>
+        source={require('../../assets/krishna.png')}
+        imageStyle={{borderRadius: 8}}>
         <Image
           source={require('../../assets/play_circle.png')}
           style={styles.playIcon}
@@ -26,11 +27,10 @@ export default function LeftOfVideo(props) {
         <LinearGradient
           colors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0.8)']}
           style={styles.flexContainer}>
-          <Text style={styles.chapterText}>Chapter 2</Text>
-          <Text style={styles.titleText}>Exploration Of Conciousness</Text>
+          <Text style={styles.titleText}>Why is Shivratri so powerful?</Text>
           <Text style={styles.desText}>
-            Stay updated with your favourite content Stay updated with your
-            favourite content
+            One is that Lord Shiva married Parvati on this day. So, it is a
+            celebration of thi...
           </Text>
         </LinearGradient>
       </ImageBackground>
@@ -39,15 +39,10 @@ export default function LeftOfVideo(props) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Pick up from where you left off</Text>
-      <CustomCarousel
-        data={[...new Array(3).keys()]}
-        _renderItem={_renderItem}
-        sliderWidth={width}
-        sliderHeight={width}
-        itemWidth={260}
-        hasParallaxImages={true}
-      />
+      <Text style={styles.title}>Trending Near You!</Text>
+      <ScrollView horizontal={true}>
+        {data.map((item, index) => _renderItem(item, index))}
+      </ScrollView>
     </View>
   );
 }
@@ -73,13 +68,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     padding: 20,
     position: 'relative',
-  },
-  chapterText: {
-    fontFamily: 'Roboto',
-    fontWeight: '300',
-    fontSize: 12,
-    lineHeight: 14,
-    color: '#FFFBFE',
   },
   titleText: {
     fontFamily: 'Roboto',
