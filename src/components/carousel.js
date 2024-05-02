@@ -1,106 +1,59 @@
 import React, {useState} from 'react';
-import {View} from 'react-native';
-import Animated, {
-  Extrapolate,
-  interpolate,
-  useAnimatedStyle,
-  useSharedValue,
-} from 'react-native-reanimated';
-import Carousel from 'react-native-reanimated-carousel';
+import {StyleSheet} from 'react-native';
+import Carousel, {Pagination} from 'react-native-snap-carousel';
 
 export default function CustomCarousel(props) {
-  const progressValue = useSharedValue(0);
   const [currentIndex, setIndex] = useState(0);
-  const {_renderItem, data, mode, showDots = true, height, width} = props;
+  const {
+    _renderItem,
+    data,
+    itemWidth,
+    sliderWidth,
+    sliderHeight,
+    hasParallaxImages,
+    layout = 'default',
+    loop = true,
+    showDots,
+  } = props;
 
   return (
     <>
       <Carousel
-        width={width}
-        height={height}
+        loop={loop}
+        sliderWidth={sliderWidth}
+        sliderHeight={sliderHeight}
+        itemWidth={itemWidth}
         data={data}
-        pagingEnabled={true}
-        mode={mode}
-        scrollAnimationDuration={500}
-        onSnapToItem={index => setIndex(index)}
         renderItem={_renderItem}
-        onProgressChange={(_, absoluteProgress) =>
-          (progressValue.value = absoluteProgress)
-        }
+        hasParallaxImages={hasParallaxImages}
+        layout={layout}
+        onSnapToItem={index => setIndex(index)}
       />
-      {!!progressValue && showDots && (
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            width: 100,
-            alignSelf: 'center',
-          }}>
-          {data.map((item, index) => (
-            <PaginationItem
-              backgroundColor={currentIndex === index ? '#000' : '#fff'}
-              animValue={progressValue}
-              index={index}
-              key={index}
-              length={data.length}
-            />
-          ))}
-        </View>
+      {showDots && (
+        <Pagination
+          dotsLength={data.length}
+          activeDotIndex={currentIndex}
+          dotStyle={styles.dot}
+          inactiveDotStyle={styles.inactiveDot}
+          inactiveDotScale={0.6}
+          containerStyle={{paddingVertical: 0}}
+        />
       )}
     </>
   );
 }
 
-const PaginationItem = props => {
-  const {animValue, index, length, backgroundColor} = props;
-  const width = 10;
-
-  const animStyle = useAnimatedStyle(() => {
-    let inputRange = [index - 1, index, index + 1];
-    let outputRange = [-width, 0, width];
-
-    if (index === 0 && animValue?.value > length - 1) {
-      inputRange = [length - 1, length, length + 1];
-      outputRange = [-width, 0, width];
-    }
-
-    return {
-      transform: [
-        {
-          translateX: interpolate(
-            animValue?.value,
-            inputRange,
-            outputRange,
-            Extrapolate.CLAMP,
-          ),
-        },
-      ],
-    };
-  }, [animValue, index, length]);
-  return (
-    <View
-      style={{
-        backgroundColor: 'white',
-        width,
-        height: width,
-        borderRadius: 50,
-        overflow: 'hidden',
-        transform: [
-          {
-            rotateZ: '0deg',
-          },
-        ],
-      }}>
-      <Animated.View
-        style={[
-          {
-            borderRadius: 50,
-            backgroundColor,
-            flex: 1,
-          },
-          animStyle,
-        ]}
-      />
-    </View>
-  );
-};
+const styles = StyleSheet.create({
+  dot: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: '#000',
+  },
+  inactiveDot: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: '#fff',
+  },
+});

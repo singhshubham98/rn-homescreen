@@ -66,8 +66,9 @@ export default function _calendarCarouselElement(props) {
   return (
     <>
       <CustomCarousel
-        width={width - 30}
-        height={width / 2}
+        sliderWidth={width - 30}
+        itemWidth={width - 30}
+        showDots={true}
         data={[...new Array(3).keys()]}
         _renderItem={_renderItem}
       />
