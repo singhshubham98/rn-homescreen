@@ -14,6 +14,8 @@ export default function CustomCarousel(props) {
     layout = 'default',
     loop = true,
     showDots,
+    dotActiveColor = '#000',
+    dotInactiveColor = '#fff',
   } = props;
 
   return (
@@ -33,8 +35,11 @@ export default function CustomCarousel(props) {
         <Pagination
           dotsLength={data.length}
           activeDotIndex={currentIndex}
-          dotStyle={styles.dot}
-          inactiveDotStyle={styles.inactiveDot}
+          dotStyle={[styles.dot, {backgroundColor: dotActiveColor}]}
+          inactiveDotStyle={[
+            styles.inactiveDot,
+            {backgroundColor: dotInactiveColor},
+          ]}
           inactiveDotScale={0.6}
           containerStyle={{paddingVertical: 0}}
         />
@@ -48,12 +53,10 @@ const styles = StyleSheet.create({
     width: 10,
     height: 10,
     borderRadius: 5,
-    backgroundColor: '#000',
   },
   inactiveDot: {
     width: 10,
     height: 10,
     borderRadius: 5,
-    backgroundColor: '#fff',
   },
 });
