@@ -15,6 +15,7 @@ import Trending from './home/trending';
 import RecommendedActivity from './home/rActivity';
 import News from './home/news';
 import Events from './home/events';
+import TopProductOfDay from './home/topProductOfDay';
 
 export default function Home() {
   return (
@@ -36,6 +37,7 @@ export default function Home() {
       <Quote />
       <LeftOfVideo />
       <RecommendedActivity />
+      <TopProductOfDay />
       <Trending />
       <News />
       <Events />
