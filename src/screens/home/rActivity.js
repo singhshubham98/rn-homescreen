@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Text,
-  View,
-  Image,
-  StyleSheet,
-  Dimensions,
-  Platform,
-} from 'react-native';
+import {Text, View, Image, StyleSheet, Dimensions} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 const width = Dimensions.get('window').width;
 
