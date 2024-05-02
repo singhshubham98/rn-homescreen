@@ -5,19 +5,17 @@ import {
   Text,
   ImageBackground,
   ScrollView,
-  Image,
 } from 'react-native';
 import Header from '../components/header';
 import LinearGradient from 'react-native-linear-gradient';
 import _calendarCarouselElement from './home/calendarCarouselElement';
+import Quote from './home/quote';
+import LeftOfVideo from './home/leftOfVideo';
 
 export default function Home() {
   return (
     <ScrollView style={styles.container}>
-      <LinearGradient
-        colors={['#fff', '#FFD1C2']}
-        // style={buttonView}
-      >
+      <LinearGradient colors={['#fff', '#FFD1C2']}>
         <Header />
         <View style={styles.flowerContainer}>
           <ImageBackground
@@ -31,6 +29,8 @@ export default function Home() {
           </ImageBackground>
         </View>
       </LinearGradient>
+      <Quote />
+      <LeftOfVideo />
     </ScrollView>
   );
 }
@@ -54,5 +54,6 @@ const styles = StyleSheet.create({
     color: '#121212',
     marginTop: 40,
     marginBottom: 20,
+    paddingLeft: 5,
   },
 });

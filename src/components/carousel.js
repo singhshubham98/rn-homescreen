@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Dimensions, View} from 'react-native';
+import {View} from 'react-native';
 import Animated, {
   Extrapolate,
   interpolate,
@@ -9,18 +9,18 @@ import Animated, {
 import Carousel from 'react-native-reanimated-carousel';
 
 export default function CustomCarousel(props) {
-  const width = Dimensions.get('window').width;
   const progressValue = useSharedValue(0);
   const [currentIndex, setIndex] = useState(0);
-  const {_renderItem, data} = props;
+  const {_renderItem, data, mode, showDots = true, height, width} = props;
 
   return (
     <>
       <Carousel
-        width={width - 30}
-        height={width / 2}
+        width={width}
+        height={height}
         data={data}
         pagingEnabled={true}
+        mode={mode}
         scrollAnimationDuration={500}
         onSnapToItem={index => setIndex(index)}
         renderItem={_renderItem}
@@ -28,7 +28,7 @@ export default function CustomCarousel(props) {
           (progressValue.value = absoluteProgress)
         }
       />
-      {!!progressValue && (
+      {!!progressValue && showDots && (
         <View
           style={{
             flexDirection: 'row',
