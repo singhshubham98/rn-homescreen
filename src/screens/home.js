@@ -14,6 +14,7 @@ import LeftOfVideo from './home/leftOfVideo';
 import Trending from './home/trending';
 import RecommendedActivity from './home/rActivity';
 import TopProductOfDay from './home/topProductOfDay';
+import Courses from './home/courses';
 
 export default function Home() {
   return (
@@ -37,6 +38,7 @@ export default function Home() {
       <RecommendedActivity />
       <TopProductOfDay />
       <Trending />
+      <Courses />
     </ScrollView>
   );
 }
