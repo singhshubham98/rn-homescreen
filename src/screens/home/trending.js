@@ -52,6 +52,7 @@ export default function LeftOfVideo(props) {
       <ScrollView
         horizontal={true}
         ref={scrollViewRef}
+        showsHorizontalScrollIndicator={false}
         onLayout={() => scrollToItem(1)}>
         {data.map((item, index) => _renderItem(item, index))}
       </ScrollView>
