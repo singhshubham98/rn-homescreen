@@ -41,10 +41,11 @@ export default function CourseCardContent() {
 const styles = StyleSheet.create({
   carouselContainer: {
     height: width * 0.8,
-    width: width * 0.9,
+    width: width,
     marginLeft: 0,
     borderRadius: 8,
     marginBottom: 20,
+    paddingHorizontal: 20,
   },
   footer: {
     backgroundColor: '#000',

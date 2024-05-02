@@ -7,9 +7,7 @@ export default function Courses(props) {
   return (
     <>
       <Text style={styles.title}>Courses</Text>
-      <CustomCard>
-        <CourseCardContent />
-      </CustomCard>
+      <CourseCardContent />
     </>
   );
 }
@@ -25,5 +23,6 @@ const styles = StyleSheet.create({
     lineHeight: 18.75,
     color: '#000000',
     paddingLeft: 20,
+    paddingBottom: 20,
   },
 });
