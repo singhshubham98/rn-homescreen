@@ -35,8 +35,8 @@ export default function Home() {
       <Quote />
       <LeftOfVideo />
       <RecommendedActivity />
-      <Trending />
       <TopProductOfDay />
+      <Trending />
     </ScrollView>
   );
 }
