@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {
   Text,
   View,
@@ -8,13 +8,22 @@ import {
   Dimensions,
   Platform,
 } from 'react-native';
-import CustomCarousel from '../../components/carousel';
 import LinearGradient from 'react-native-linear-gradient';
 import {ScrollView} from 'react-native-gesture-handler';
 const width = Dimensions.get('window').width;
 
 export default function LeftOfVideo(props) {
+  const scrollViewRef = useRef(null);
   const data = [...new Array(3).keys()];
+
+  const scrollToItem = index => {
+    scrollViewRef.current.scrollTo({
+      x: index * 260 - 30,
+      y: 0,
+      animated: true,
+    });
+  };
+
   const _renderItem = () => (
     <View style={{height: 260, width: 260, marginHorizontal: 10}}>
       <ImageBackground
@@ -40,7 +49,10 @@ export default function LeftOfVideo(props) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Trending Near You!</Text>
-      <ScrollView horizontal={true}>
+      <ScrollView
+        horizontal={true}
+        ref={scrollViewRef}
+        onLayout={() => scrollToItem(1)}>
         {data.map((item, index) => _renderItem(item, index))}
       </ScrollView>
     </View>
